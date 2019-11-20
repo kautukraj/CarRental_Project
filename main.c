@@ -17,7 +17,7 @@ int main()
 main:
 	system("clear");
 	printf("\n\t **** Welcome to Car Rental System ****\n");
-	printf("Menu Options 1.... 2.... 3.... 4.... 5.... 6.....7.....8......9.....10.....\n");
+	printf("MENU OPTIONS\n\n 1.Display All\n2.Least Base Fare\n3.Most Base Fare\n4.Display Automatic\n5.Given Capacity\n6.Given Range\n7.Same MFG\n8.Change Stock\n9.Add Entry\n10.Billing\n");
 	printf("Enter the choice:");
 	scanf("%d",&ch);
 
@@ -88,7 +88,7 @@ retry:
 	switch (ch)
 	{
 		
-	case 1:
+    case 1:
 		goto main;
 
     case 0:
