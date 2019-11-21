@@ -1,15 +1,4 @@
 Kia Seltos 600 14 5 Auto 5
 Tata Tiago 600 10 4 Auto 10
-Hyundai Elantra 600 14 6 Mannual 15
-Maruti Swift 500 10 4 Auto 0
-MG Hector 550 15 7 Auto 12
-Toyota Prius 550 15 7 Auto 0
-Mahindra Reva 400 8 2 Mannual 12
-Tesla Model-T 1000 30 4 Auto 1
-Hyundai Santro 350 6 4 Mannual 50
-Maruti WagonR 500 10 5 Mannual 12
-Renault Kwid 400 11 4 Mannual 10
-Renault Duster 800 20 7 Auto 15
-Mfg Model 100 10 5 Auto 10
-New-Mfg Modelnew 100 10 10 Mannual 10
-random random 10 10 10 auto 10
+test test 10 10 10 auto 10
+mfg model 10 10 10 mmmm 10

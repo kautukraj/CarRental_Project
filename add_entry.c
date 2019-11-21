@@ -48,7 +48,7 @@ void add_entry()
         printf("Stock: ");
         scanf("%d", &list.stock);
 
-        fprintf(fp, "%s %s %d %d %d %s %d", list.mfg, list.model, list.base_fare, list.km_fare, // where the cursor is at that point
+        fprintf(fp, "%s %s %d %d %d %s %d", list.mfg, list.model, list.base_fare, list.km_fare,
             list.seats, list.trans, list.stock);
     }
     fseek(fp,0,SEEK_END);
