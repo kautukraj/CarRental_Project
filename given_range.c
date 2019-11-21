@@ -4,22 +4,22 @@
 
 void given_range()
 {
-    
-	struct car
-	{
-    char mfg[10];
-    char model[10];
-    int base_fare;
-    int km_fare;
-    int seats;
-    char trans[9];
-    int stock;
-	} list, temp;
+    system("clear");
+    struct car
+    {
+        char mfg[10];
+        char model[10];
+        int base_fare;
+        int km_fare;
+        int seats;
+        char trans[9];
+        int stock;
+    } temp;
 
-int l,u;
-printf("Enter range you want. ");
-scanf("%d %d",&l,&u);
-    int i,count=0; char ch;
+    int u,l;
+
+    int i, count = 0, flag = 0;
+    char ch;
     FILE* fp;
     fp = fopen("car_rental.txt", "r");
 
@@ -33,18 +33,35 @@ scanf("%d %d",&l,&u);
         if (ch == EOF)
             break;
     }
- 
-	rewind(fp);
-    for (i = 1; i <= count; i++)
+    for (;;)
     {
-        fscanf(fp, "%s %s %d %d %d %s %d", temp.mfg, temp.model, &temp.base_fare, &temp.km_fare,
-            &temp.seats, temp.trans, &temp.stock);
-        if (temp.base_fare > l && temp.base_fare < u)
-            printf("%s %s %d %d %d %s %d\n", temp.mfg, temp.model, temp.base_fare, temp.km_fare,
-                temp.seats, temp.trans, temp.stock);
+        fflush(stdin);
+        // system("clear");
+        printf("\nTo go back enter 0 0 in the input\nEnter the required base fare range in format <lower> <upper>: ");
+        scanf("%d %d", &l,&u);
+
+        if (l==0 && u==0)
+            break;
+
+        rewind(fp);
+        printf("\nManufacturer Model Base Fare Kilometer Fare Seats Transmission Stock\n\n");
+        for (i = 1; i <= count; i++)
+        {
+            fscanf(fp, "%s %s %d %d %d %s %d", temp.mfg, temp.model, &temp.base_fare, &temp.km_fare,
+                &temp.seats, temp.trans, &temp.stock);
+            if (temp.base_fare > l && temp.base_fare < u && temp.stock != 0)
+            {
+                printf("%s %s %d %d %d %s %d\n", temp.mfg, temp.model, temp.base_fare, temp.km_fare,
+                    temp.seats, temp.trans, temp.stock);
+                flag = 1;
+            }
+            else if (temp.base_fare > l && temp.base_fare < u && temp.stock == 0)
+            {
+                printf("%s %s %d %d %d %s (Out of stock)\n", temp.mfg, temp.model, temp.base_fare,
+                    temp.km_fare, temp.seats, temp.trans);
+                flag = 1;
+            }
+        }
     }
-
-
-    // if stock is zero then look for the next available one
     fclose(fp);
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void same_mfg()
+void given_kmfare()
 {
     system("clear");
     struct car
@@ -16,7 +16,7 @@ void same_mfg()
         int stock;
     } temp;
 
-    char mfg[10];
+    int km_fare;
     int i, count = 0, flag = 0;
     char ch;
     FILE* fp;
@@ -36,10 +36,10 @@ void same_mfg()
     {
         fflush(stdin);
         // system("clear");
-        printf("\nTo go back enter Q/q in the input\nEnter the manufacturer: ");
-        scanf("%s", mfg);
+        printf("\nTo go back enter -999 in the input\nEnter the required kilometer fare: ");
+        scanf("%d", &km_fare);
 
-        if (strcmp(mfg,"q")==0 || strcmp(mfg,"Q")==0)
+        if (km_fare == -999)
             break;
 
         rewind(fp);
@@ -48,13 +48,13 @@ void same_mfg()
         {
             fscanf(fp, "%s %s %d %d %d %s %d", temp.mfg, temp.model, &temp.base_fare, &temp.km_fare,
                 &temp.seats, temp.trans, &temp.stock);
-            if (strcmp(temp.mfg,mfg)==0 && temp.stock != 0) // need to bring case insensitivity
+            if (temp.km_fare == km_fare && temp.stock != 0)
             {
                 printf("%s %s %d %d %d %s %d\n", temp.mfg, temp.model, temp.base_fare, temp.km_fare,
                     temp.seats, temp.trans, temp.stock);
                 flag = 1;
             }
-            else if (strcmp(temp.mfg,mfg)==0 && temp.stock == 0)
+            else if (temp.km_fare == km_fare && temp.stock == 0)
             {
                 printf("%s %s %d %d %d %s (Out of stock)\n", temp.mfg, temp.model, temp.base_fare,
                     temp.km_fare, temp.seats, temp.trans);

@@ -14,9 +14,10 @@ struct car
 	int seats;
 	char trans[9];
 	int stock;
-} list,temp;
+} temp;
 
-char model[10]; int i,count=0, new_stock;
+	char model[10];
+	int i,count=0, new_stock;
 	FILE* fp;
 	FILE* ft;
 	char ch;

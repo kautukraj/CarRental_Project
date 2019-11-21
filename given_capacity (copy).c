@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void most_base_fare()
+void given_capacity()
 {
     system("clear");
     struct car
@@ -16,8 +16,14 @@ void most_base_fare()
         int stock;
     } temp;
 
+    int cap;
+    printf("Enter the seating capacity: ");
+    scanf("%d", &cap);
 
-    int i, count = 0, no_entry = 0;
+    if (cap==-999)
+	return;
+
+    int i, count = 0, flag = 0;
     char ch;
     FILE* fp;
     fp = fopen("car_rental.txt", "r");
@@ -33,43 +39,31 @@ void most_base_fare()
             break;
     }
 
-    int base_fare[count];
-    rewind(fp);
-
-    for (i = 1; i <= count; i++)
-    {
-        fscanf(fp, "%s %s %d %d %d %s %d", temp.mfg, temp.model, &temp.base_fare, &temp.km_fare,
-            &temp.seats, temp.trans, &temp.stock);
-	if (temp.stock!=0)
-        {
-		base_fare[no_entry++] = temp.base_fare;
-	}
-    }
-
-    int max = base_fare[0];
-
-    for (i = 0; i < no_entry; i++)
-    {
-        if (base_fare[i] > max)
-         max = base_fare[i];
-    }
-
     rewind(fp);
     printf("\nManufacturer Model Base Fare Kilometer Fare Seats Transmission Stock\n\n");
-
     for (i = 1; i <= count; i++)
     {
         fscanf(fp, "%s %s %d %d %d %s %d", temp.mfg, temp.model, &temp.base_fare, &temp.km_fare,
             &temp.seats, temp.trans, &temp.stock);
-        if (temp.base_fare == max && temp.stock!=0)
+        if (temp.seats == cap && temp.stock != 0)
+        {
             printf("%s %s %d %d %d %s %d\n", temp.mfg, temp.model, temp.base_fare, temp.km_fare,
                 temp.seats, temp.trans, temp.stock);
-        else if (temp.base_fare == max && temp.stock==0)
-            printf("%s %s %d %d %d %s (Out of stock)\n", temp.mfg, temp.model, temp.base_fare, temp.km_fare,
-                temp.seats, temp.trans);
-
+            flag = 1;
+        }
+        else if (temp.seats == cap && temp.stock == 0)
+        {
+            printf("%s %s %d %d %d %s (Out of stock)\n", temp.mfg, temp.model, temp.base_fare,
+                temp.km_fare, temp.seats, temp.trans);
+            flag = 1;
+        }
     }
 
-    
+    if (flag == 0)
+    {
+        printf("Try a different seating capacity or enter -999 to go back\t"); // problem
+        given_capacity();
+    }
+
     fclose(fp);
 }

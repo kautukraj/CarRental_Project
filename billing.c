@@ -14,14 +14,15 @@ struct car
 	int seats;
 	char trans[9];
 	int stock;
-} list,temp;
+} temp;
 
-	char model[10]; int i,km,bill,count=0; char ch;
+	char model[10];
+	int i,km,bill,count=0; char ch;
 	FILE* fp;
 	fp=fopen("car_rental.txt","r");
-	printf("Enter the model of car used:");
+	printf("Enter the model of car used: ");
 	scanf("%s",model);
-	printf("Enter the number of kilometers:");
+	printf("Enter the number of kilometers: ");
 	scanf("%d",&km);
 
 	    while (1) // counting number of entries
@@ -40,7 +41,7 @@ rewind(fp);
 	for(i=1;i<=count;i++)
 	{
 		fscanf(fp,"%s %s %d %d %d %s %d",temp.mfg,temp.model,&temp.base_fare,&temp.km_fare,&temp.seats,temp.trans,&temp.stock);
-		if (strcmp(temp.model,model)==0)
+		if (strcmp(temp.model,model)==0) // bring indifference to u&l
 			{
 				bill = temp.base_fare + km*temp.km_fare;
 				break;
