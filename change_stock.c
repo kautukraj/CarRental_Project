@@ -15,19 +15,15 @@ struct car
 	char trans[9];
 	int stock;
 } temp;
-
+	system("clear");
 	char model[10];
-	int i,count=0, new_stock;
+	int i,count=0, new_stock,flag=0;
 	FILE* fp;
 	FILE* ft;
 	char ch;
 	fp=fopen("car_rental.txt","r");
 	ft=fopen("temp.txt","w");
-	printf("Enter the model of car to modify stock:");
-	scanf("%s",model);
-	printf("Enter the new stock:");
-	scanf("%d",&new_stock);
-	
+
 
     while (1) // counting number of entries
     {
@@ -39,26 +35,42 @@ struct car
         if (ch == EOF)
             break;
     }
- 
+
 	rewind(fp);
+    for (;;)
+    {
+        fflush(stdin);
+        printf("\nTo exit enter Q/q in the input\n");
+        printf("Enter the model of car to modify stock: ");
+        scanf("%s",model);
+
+	if (strcmp(model,"q") == 0 || strcmp(model,"Q")==0)
+	{
+	return;
+	}
+
+	printf("Enter the new stock: ");
+	scanf("%d",&new_stock);
+
 
 	for(i=1;i<=count;i++)
 	{
 		fscanf(fp,"%s %s %d %d %d %s %d",temp.mfg,temp.model,&temp.base_fare,&temp.km_fare,&temp.seats,temp.trans,&temp.stock);
 		if (strcmp(temp.model,model)==0)
-			fprintf(ft,"%s %s %d %d %d %s %d\n",temp.mfg,temp.model,temp.base_fare,
-				            temp.km_fare,temp.seats,temp.trans,new_stock);
-			
+			{fprintf(ft,"%s %s %d %d %d %s %d\n",temp.mfg,temp.model,temp.base_fare,
+				            temp.km_fare,temp.seats,temp.trans,new_stock); flag=1;}
+
 		else
 			fprintf(ft,"%s %s %d %d %d %s %d\n",temp.mfg,temp.model,temp.base_fare,
 				            temp.km_fare,temp.seats,temp.trans,temp.stock);
-			// write code for try again
-			// program should tell then and there that such car does not exist
-			// successfully done message
 	}
-	
+
+	if (flag==0)
+		printf("\nNo match found for the given car in our database");
+	printf("%d",flag);
 	fclose(fp);
 	fclose(ft);
 	remove("car_rental.txt");
 	rename("temp.txt","car_rental.txt");
+    }
 }
