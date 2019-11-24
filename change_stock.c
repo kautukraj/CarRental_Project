@@ -67,7 +67,6 @@ struct car
 
 	if (flag==0)
 		printf("\nNo match found for the given car in our database");
-	printf("%d",flag);
 	fclose(fp);
 	fclose(ft);
 	remove("car_rental.txt");

@@ -29,8 +29,8 @@ main: // goto label
     printf("8. Display all cars with a given kilometer fare\n");
     printf("9. Add and remove stock\n");
     printf("10.Add entry\n");
-    printf("11.Remove entry\n");
-    printf("12.Generate bill\n");
+    //printf("11.Remove entry\n");
+    printf("11.Generate bill\n");
     printf("0. Exit\n\n"); 
     printf("Enter the choice: ");
     scanf("%d", &ch);
@@ -81,11 +81,11 @@ main: // goto label
             add_entry();
             break;
 
-        case 11:
-            remove_entry();
-            break;
+        //case 11:
+            //remove_entry();
+            //break;
 
-        case 12:
+        case 11:
             billing();
             break;
 

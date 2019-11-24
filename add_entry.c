@@ -51,6 +51,6 @@ void add_entry()
         fprintf(fp, "%s %s %d %d %d %s %d\n", list.mfg, list.model, list.base_fare, list.km_fare,
             list.seats, list.trans, list.stock);
     }
-    fseek(fp,0,SEEK_END);
+    //fseek(fp,0,SEEK_END);
     fclose(fp);
 }

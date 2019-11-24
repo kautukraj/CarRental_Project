@@ -31,7 +31,7 @@ void display_all()
         if (ch == EOF)
             break;
     }
-    printf("%d\n",count);
+
     rewind(fp);
     printf("\nManufacturer Model Base Fare Kilometer Fare Seats Transmission Stock\n\n");
     for (i = 1; i <= count; i++)

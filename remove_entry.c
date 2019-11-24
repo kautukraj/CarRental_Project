@@ -15,6 +15,7 @@ struct car
 	char trans[9];
 	int stock;
 } temp;
+
 	system("clear");
 	char model[10];
 	int i,count=0,flag=0;
@@ -23,7 +24,6 @@ struct car
 	char ch;
 	fp=fopen("car_rental.txt","r");
 	ft=fopen("temp.txt","w");
-
 
     while (1) // counting number of entries
     {
@@ -34,9 +34,9 @@ struct car
         }
         if (ch == EOF)
             break;
-    }
+    } 
 
-	rewind(fp);
+    rewind(fp);
     for (;;)
     {
         fflush(stdin);
@@ -67,6 +67,6 @@ struct car
 	fclose(fp);
 	fclose(ft);
 	remove("car_rental.txt");
-	rename("temp.txt","car_rental.txt");
+	rename("temp.txt","car_rental.txt"); 
     }
 }

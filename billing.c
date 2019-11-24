@@ -35,7 +35,7 @@ void billing()
     }
     for (;;)
     {
-        fflush(stdin);
+        //fflush(stdin);
         // system("clear");
         printf("\nTo go back enter Q/q in the input\nEnter the car model: ");
         scanf("%s", model); // should tell then and there that model not found
@@ -54,10 +54,10 @@ void billing()
             if (strcmp(temp.model, model) == 0)
             {
                 bill = temp.base_fare + km * temp.km_fare;
-                printf("Car : %s %s\n", temp.mfg, temp.model);
+                printf("\nCar : %s %s\n", temp.mfg, temp.model);
 		printf("Base fare = %d\n", temp.base_fare);
 		printf("Kilometer fare = %d\n", temp.km_fare);
-		printf("Bill amount = %d\n", temp.base_fare);	
+		printf("Bill amount = %d\n", bill);	
                 flag = 1;
             }
         }
